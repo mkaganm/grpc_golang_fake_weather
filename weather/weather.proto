@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package weather;
+
+option go_package = "/weather";
+
+service Weather {
+  rpc GetWeather(WeatherRequest) returns (WeatherResponse);
+  rpc StreamWeatherUpdates(WeatherRequest) returns (stream WeatherResponse);
+}
+
+message WeatherRequest {
+  string city = 1;
+}
+
+message WeatherResponse {
+  string city = 1;
+  float temperature = 2;
+  float humidity = 3;
+  string condition = 4;
+}
